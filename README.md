@@ -8,7 +8,11 @@
 
 ### FOFA SDK
 
-基于 FOFA API编写的 python 版 SDK, 方便 python 开发者快速将 FOFA集成到自己的项目中
+基于 FOFA API编写的 python 版 SDK, 方便 python 开发者快速将 FOFA集成到自己的项目中。
+
+更好的Markdown兼容阅读：https://m0x1n.easyctf.cn/moxin/13876
+
+
 
 # 调用方法
 
