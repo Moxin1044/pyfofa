@@ -12,8 +12,6 @@
 
 更好的Markdown兼容阅读：https://m0x1n.easyctf.cn/moxin/13876
 
-
-
 # 调用方法
 
 ### 配置文件
@@ -44,7 +42,10 @@ proxy默认为空，如需代理，可对其进行填写。
 ------
 
 ```python
-clients = Client()
+import pyfofa
+
+
+handle = pyfofa.Client()
 print(clients.check_fofa_config())
 ```
 
@@ -64,7 +65,7 @@ print(clients.check_fofa_config())
 import pyfofa
 
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.userinfo())
 ```
 
@@ -98,7 +99,7 @@ print(handle.userinfo())
 import pyfofa
 
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.search('title="bing"'))
 ```
 
@@ -192,7 +193,7 @@ handle.search('domain="qq.com"',field=field,size=10)
 import pyfofa
 
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.search_stats('ip="103.35.168.38"'))
 ```
 
@@ -246,7 +247,7 @@ handle.search(query_text, field)
 import pyfofa
 
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.search_host('78.48.50.249'))
 ```
 
@@ -325,7 +326,7 @@ handle.search_host(host, detail=False)
 ```python
 import pyfofa
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.username)
 ```
 
@@ -344,7 +345,7 @@ Moxin
 ```python
 import pyfofa
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.fcoin)
 ```
 
@@ -363,7 +364,7 @@ print(handle.fcoin)
 ```python
 import pyfofa
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.isvip)
 ```
 
@@ -382,7 +383,7 @@ true
 ```python
 import pyfofa
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.viplevel)
 ```
 
@@ -401,7 +402,7 @@ print(handle.viplevel)
 ```python
 import pyfofa
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 print(handle.avatar)
 ```
 
