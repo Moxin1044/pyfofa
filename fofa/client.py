@@ -54,7 +54,7 @@ class Client:
         '''
         return response
 
-    def search_stats(self,query_text, field=None):
+    def search_stats(self, query_text, field=None):
         if field is None:
             field = ['title']
         fields = ','.join(field)
