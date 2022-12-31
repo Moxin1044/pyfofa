@@ -70,4 +70,4 @@ class Client:
 
 
 clients = Client()
-print(clients.search_stats("text"))
+print(clients.search_host("127.0.0.1", detail=True))
