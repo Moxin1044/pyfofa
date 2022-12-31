@@ -41,7 +41,7 @@ class Client:
         if field is None:
             field = ['ip', 'host', 'port']
         fields = ','.join(field)
-        query = fofa.operation.get_base64(query_text)
+        query = fofa.operation.get_base64_url(query_text)
         url = f"https://fofa.info/api/v1/search/all?email={self.email}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full={full}"
         response = fofa.operation.send_get_json(url)
         if response['error']:
@@ -53,8 +53,8 @@ class Client:
         if field is None:
             field = ""
         fields = ','.join(field)
-        query = fofa.operation.get_base64(query_text)
-        url = f"https://fofa.info/api/v1/search/stats?fields=title&qbase64=dGl0bGU9IueZvuW6piI%3D&email={self.email}&key={self.key}"
+        query = fofa.operation.get_base64_url(query_text)
+        url = f"https://fofa.info/api/v1/search/stats?fields={fields}&qbase64={query}&email={self.email}&key={self.key}"
         print(query)
 
 
