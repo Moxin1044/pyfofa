@@ -1,7 +1,3 @@
-
-
-[TOC]
-
 # FOFA SDK使用说明文档
 
 ### FOFA API
