@@ -499,4 +499,9 @@ Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 
 # pythonfofa
 
-pythonfofa是在PyPi中的一个库，与本仓库类似，但是只是定义email、key和proxy的方式不同，等待更新。
+pythonfofa是在PyPi中的一个库，与本仓库类似，但是只是定义email、key和proxy的方式不同。
+
+仓库地址为：https://github.com/Moxin1044/pythonfofa
+
+PyPi地址：https://pypi.org/project/pythonfofa/1.0.0/
+
