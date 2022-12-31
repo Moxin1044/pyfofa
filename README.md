@@ -45,7 +45,7 @@ print(clients.check_fofa_config())
 
 当然，每次执行前都会自动执行一次get_userinfo()，会根据您在config.json中填写的email和key进行获取信息。
 
-# 示例
+## 示例
 
 ```
 
@@ -55,7 +55,7 @@ print(clients.check_fofa_config())
 
 
 
-### 获取
+## 获取
 
 ------
 
