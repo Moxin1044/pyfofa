@@ -71,8 +71,6 @@ pip install requests
 
 ------
 
-
-
 ### 环境
 
 ------
@@ -80,7 +78,7 @@ pip install requests
 #### 开发环境
 
 ```
-win11 +Python +pycharm
+Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 ```
 
 #### 使用环境

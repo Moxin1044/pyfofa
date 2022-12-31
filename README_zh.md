@@ -8,7 +8,7 @@
 
 ### FOFA SDK
 
-基于 FOFA Pro API编写的 python 版 SDK, 方便 python 开发者快速将 FOFA Pro集成到自己的项目中
+基于 FOFA API编写的 python 版 SDK, 方便 python 开发者快速将 FOFA集成到自己的项目中
 
 # 调用方法
 
@@ -71,8 +71,6 @@ pip install requests
 
 ------
 
-
-
 ### 环境
 
 ------
@@ -80,7 +78,7 @@ pip install requests
 #### 开发环境
 
 ```
-win11 +Python +pycharm
+Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 ```
 
 #### 使用环境
