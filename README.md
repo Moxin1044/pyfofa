@@ -20,17 +20,20 @@
 
 ```json
 {
-    "email":"xxx@qq.com",
-    "key":"fofa_key",
+    "email":"***",
+    "key":"***",
+    "api_url":"https://fofa.info/api/v1",
     "proxy":""
 }
 ```
 
 proxy默认为空，如需代理，可对其进行填写。
 
-| `Email` | 用户登陆 `FOFA ` 使用的 `Email`                              |
-| ------- | ------------------------------------------------------------ |
-| `Key`   | 前往 [**`个人中心`**](https://fofa.info/userInfo) 查看 `API Key` |
+|  `Email`  | 用户登陆 `FOFA ` 使用的`Email`                               |
+| :-------: | :----------------------------------------------------------- |
+|   `Key`   | 前往 [**`个人中心`**](https://fofa.info/userInfo) 查看 `API Key` |
+| `api_url` | 没有事情请不要修改哦，这里是FOFA的API请求地址                |
+|  `proxy`  | 用户定义的代理，格式为`127.0.0.1:8080`，如无需代理，请设置为空 |
 
 #### 检查Fofa配置
 
@@ -45,13 +48,104 @@ print(clients.check_fofa_config())
 
 当然，每次执行前都会自动执行一次get_userinfo()，会根据您在config.json中填写的email和key进行获取信息。
 
-## 示例
+# 调用示例
 
-# 
+## 读取用户信息
 
+### 代码示例
+
+```python
+import fofa
+
+
+def userinfo(handle):
+    print(handle.userinfo())
+
+handle = fofa.Client()
+userinfo(handle)
 ```
 
+### 返回信息
+
+```json
+{
+  "error": false,
+  "email": "****@qq.com",
+  "username": "***",
+  "fcoin": 48,
+  "isvip": true,
+  "vip_level": 2,
+  "is_verified": false,
+  "avatar": "https://i.nosec.org/avatar/system/****",
+  "message": "",
+  "fofacli_ver": "4.0.3",
+  "fofa_server": true
+}
 ```
+
+## 查询接口
+
+### 代码示例
+
+```Python
+import fofa
+
+
+def search(handle,query_text):
+    return handle.search(query_text)
+
+handle = fofa.Client()
+print(search(handle,'title="bing"'))
+```
+
+### 返回信息
+
+```json
+{
+  "error": false,
+  "size": 8683,
+  "page": 1,
+  "mode": "extended",
+  "query": "title\u003d\"bing\"",
+  "results": [
+    [
+      "46.101.204.107",
+      "hotel-bing.hotels-rimini-it.com",
+      "80"
+    ],
+    [
+      "104.21.32.129",
+      "https://peapix.com",
+      "443"
+    ],
+    [
+      "193.8.37.83",
+      "https://www.thorsmindecamping.dk",
+      "443"
+    ]
+  ]
+}
+```
+
+**注意：这里因为返回结果过多，所以修改了一下**
+
+### 说明
+
+`handle.search(query_text)`中，可以指定的传参如下：
+
+```python
+handle.search(query_text, field, page, size, full)
+```
+
+|   参数名   | 是否可空 |          默认值          | 传参类型 | 解释                                                         |
+| :--------: | :------: | :----------------------: | :------: | ------------------------------------------------------------ |
+| query_text |    否    |            无            |  string  | 需要进行查询的语句,即输入的查询内容                          |
+|   field    |    是    | `['ip', 'host', 'port']` |   list   | 可选字段，默认host,ip,port，详见[附录1](https://fofa.info/api)或文末附录 |
+|    page    |    是    |            1             |   int    | 是否翻页，默认为第一页，按照更新时间排序                     |
+|    size    |    是    |           100            |   int    | 每页查询数量，默认为100条，最大支持10,000条/页               |
+|    full    |    是    |          False           | boolean  | 默认搜索一年内的数据，指定为true即可搜索全部数据             |
+
+
 
 ------
 
