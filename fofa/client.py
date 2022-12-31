@@ -36,7 +36,8 @@ class Client:
         query = base64.b64encode(query_text.encode())
         query = query.decode()
         url = f"https://fofa.info/api/v1/search/all?email={self.email}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full"
-
+        response = requests.get(url).json()
+        print(response)
 
 clients = Client()
 clients.search("text")
