@@ -2,6 +2,7 @@ import json
 import requests
 import pyfofa.operation
 
+
 class Client:
     def __init__(self):
         self.username = None
@@ -67,7 +68,7 @@ class Client:
         response = pyfofa.operation.send_get_json(url)
         return response
 
-    def search_host(self,host, detail=False):
+    def search_host(self, host, detail=False):
         url = f"{self.url}/host/{host}?detail={detail}&email={self.email_check}&key={self.key}"
         response = pyfofa.operation.send_get_json(url)
         return response
