@@ -44,10 +44,15 @@ class Client:
         query = fofa.operation.get_base64_url(query_text)
         url = f"https://fofa.info/api/v1/search/all?email={self.email}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full={full}"
         response = fofa.operation.send_get_json(url)
+        '''
+        # 考虑到生产环境，所以不可以在这里直接返回errmsg，统一返回response即可。
+        # 下同
         if response['error']:
             return response['errmsg']
         else:
             return response
+        '''
+        return response
 
     def search_stats(self,query_text, field=None):
         if field is None:
@@ -55,7 +60,8 @@ class Client:
         fields = ','.join(field)
         query = fofa.operation.get_base64_url(query_text)
         url = f"https://fofa.info/api/v1/search/stats?fields={fields}&qbase64={query}&email={self.email}&key={self.key}"
-        print(query)
+        response = fofa.operation.send_get_json(url)
+        return response
 
 
 clients = Client()
