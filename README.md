@@ -46,7 +46,7 @@ import pyfofa
 
 
 handle = pyfofa.Client()
-print(clients.check_fofa_config())
+print(handle.check_fofa_config())
 ```
 
 只需要按照上述方法配置，即可检查配置信息。会在控制台输出你当前的`email`、`key`和`proxy`。
