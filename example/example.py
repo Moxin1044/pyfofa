@@ -1,4 +1,4 @@
-import fofa
+import pyfofa
 
 handle = fofa.Client()
 # print(handle.fcoin)
