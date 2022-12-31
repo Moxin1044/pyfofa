@@ -63,6 +63,11 @@ class Client:
         response = fofa.operation.send_get_json(url)
         return response
 
+    def search_host(self,host, detail=False):
+        url = f""
+        response = fofa.operation.send_get_json(url)
+        return response
+
 
 clients = Client()
 print(clients.search_stats("text"))
