@@ -43,7 +43,7 @@ class Client:
             field = ['ip', 'host', 'port']
         fields = ','.join(field)
         query = base64.b64encode(query_text.encode()).decode()
-        url = f"https://fofa.info/api/v1/search/all?email={self.email}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full"
+        url = f"https://fofa.info/api/v1/search/all?email={self.email}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full={full}"
         response = requests.get(url).json()
         if response['error']:
             return response['errmsg']
