@@ -58,11 +58,11 @@ print(clients.check_fofa_config())
 import fofa
 
 
-def userinfo(handle):
+def userinfo():
     print(handle.userinfo())
 
 handle = fofa.Client()
-userinfo(handle)
+userinfo()
 ```
 
 ### 返回信息
@@ -91,11 +91,11 @@ userinfo(handle)
 import fofa
 
 
-def search(handle,query_text):
+def search(query_text):
     return handle.search(query_text)
 
 handle = fofa.Client()
-print(search(handle,'title="bing"'))
+print(search('title="bing"'))
 ```
 
 ### 返回信息
@@ -145,11 +145,38 @@ handle.search(query_text, field, page, size, full)
 |    size    |    是    |           100            |   int    | 每页查询数量，默认为100条，最大支持10,000条/页               |
 |    full    |    是    |          False           | boolean  | 默认搜索一年内的数据，指定为true即可搜索全部数据             |
 
+**注意：这里的field参数需要使用list传参哦**，query_text无需再base64编码。
 
+#### 演示1.查询域名“qq.com”
+
+```python
+handle.search('domain="qq.com"')
+```
+
+#### 演示2.查询域名“qq.com”的第二页
+
+```python
+handle.search('domain="qq.com"',page=2)
+```
+
+#### 演示3.查询10个域名有关“qq.com”的资产
+
+```python
+handle.search('domain="qq.com"',size=10)
+```
+
+#### 演示4.查询10个域名有关“qq.com”的资产，并且获取其IP、端口、标题和ICP备案号
+
+```python
+field =  ['ip','port','title','icp']
+handle.search('domain="qq.com"',field=field,size=10)
+```
+
+**注意：handle为`handle = fofa.Client()`，在环境中请不要忘了加上他哦！**
 
 ------
 
-
+## 
 
 ## 获取
 
