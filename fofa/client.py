@@ -64,9 +64,7 @@ class Client:
         return response
 
     def search_host(self,host, detail=False):
-        url = f"https://fofa.info/api/v1/host/{host}?detail={detail}&email={self.email}&key={self.key}"
-        response = fofa.operation.send_get_json(url)
-        return response
+
 
 
 clients = Client()
