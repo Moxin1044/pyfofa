@@ -318,7 +318,7 @@ handle.search_host(host, detail=False)
 
 ### 代码示例
 
-```
+```python
 import fofa
 
 handle = fofa.Client()
@@ -337,7 +337,7 @@ Moxin
 
 ### 代码示例
 
-```
+```python
 import fofa
 
 handle = fofa.Client()
@@ -356,7 +356,7 @@ print(handle.fcoin)
 
 ### 代码示例
 
-```
+```python
 import fofa
 
 handle = fofa.Client()
@@ -375,7 +375,7 @@ true
 
 ### 代码示例
 
-```
+```python
 import fofa
 
 handle = fofa.Client()
@@ -394,7 +394,7 @@ print(handle.viplevel)
 
 ### 代码示例
 
-```
+```python
 import fofa
 
 handle = fofa.Client()
@@ -403,7 +403,7 @@ print(handle.avatar)
 
 ### 返回信息
 
-```
+```http
 https://i.nosec.org/avatar/system/users/avatars/100/083/883/medium/3774a8c7500fc0a110aa957a1a3040c2_1.jpg?1671089293
 ```
 
