@@ -26,11 +26,15 @@ class Client:
         else:
             self.email_check = response['email']
             self.username = response['username']
+            self.isvip = response['isvip']
+            self.viplevel = response['vip_level']
+            self.avatar = response['avatar']
+            self.fcoin = response['fcoin']
             return self
 
     def userinfo(self):
         # Check Email and key
-        url = f"{self.url}/info/my?email={self.email}&key={self.key}"
+        url = f"{self.url}/info/my?email={self.email_check}&key={self.key}"
         response = fofa.operation.send_get_json(url)
         if response['error']:
             return response['errmsg']
@@ -42,7 +46,7 @@ class Client:
             field = ['ip', 'host', 'port']
         fields = ','.join(field)
         query = fofa.operation.get_base64_url(query_text)
-        url = f"{self.url}/search/all?email={self.email}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full={full}"
+        url = f"{self.url}/search/all?email={self.email_check}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full={full}"
         response = fofa.operation.send_get_json(url)
         '''
         # 考虑到生产环境，所以不可以在这里直接返回errmsg，统一返回response即可。
@@ -59,11 +63,11 @@ class Client:
             field = ['title']
         fields = ','.join(field)
         query = fofa.operation.get_base64_url(query_text)
-        url = f"{self.url}/search/stats?fields={fields}&qbase64={query}&email={self.email}&key={self.key}"
+        url = f"{self.url}/search/stats?fields={fields}&qbase64={query}&email={self.email_check}&key={self.key}"
         response = fofa.operation.send_get_json(url)
         return response
 
     def search_host(self,host, detail=False):
-        url = f"{self.url}/host/{host}?detail={detail}&email={self.email}&key={self.key}"
+        url = f"{self.url}/host/{host}?detail={detail}&email={self.email_check}&key={self.key}"
         response = fofa.operation.send_get_json(url)
         return response

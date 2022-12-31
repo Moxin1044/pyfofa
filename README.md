@@ -50,6 +50,8 @@ print(clients.check_fofa_config())
 
 # 调用示例
 
+---
+
 ## 读取用户信息
 
 ### 代码示例
@@ -58,11 +60,8 @@ print(clients.check_fofa_config())
 import fofa
 
 
-def userinfo():
-    print(handle.userinfo())
-
 handle = fofa.Client()
-userinfo()
+print(handle.userinfo())
 ```
 
 ### 返回信息
@@ -83,7 +82,11 @@ userinfo()
 }
 ```
 
+---
+
 ## 查询接口
+
+提供搜索主机、获取详细信息的方法，使开发更容易。
 
 ### 代码示例
 
@@ -91,11 +94,8 @@ userinfo()
 import fofa
 
 
-def search(query_text):
-    return handle.search(query_text)
-
 handle = fofa.Client()
-print(search('title="bing"'))
+print(handle.search('title="bing"'))
 ```
 
 ### 返回信息
@@ -128,6 +128,8 @@ print(search('title="bing"'))
 ```
 
 **注意：这里因为返回结果过多，所以修改了一下**
+
+
 
 ### 说明
 
@@ -176,9 +178,240 @@ handle.search('domain="qq.com"',field=field,size=10)
 
 ------
 
-## 
+## 统计聚合
 
-## 获取
+根据当前的查询内容，生成全球统计信息，当前可统计每个字段的前5排名。该接口限制请求并发为 5秒/次。
+
+### 代码示例
+
+```Python
+import fofa
+
+
+handle = fofa.Client()
+print(handle.search_stats('ip="103.35.168.38"'))
+```
+
+### 返回信息
+
+```json
+{
+  "error": false,
+  "distinct": {
+    "ip": 1,
+    "title": 1
+  },
+  "aggs": {
+    "countries": [],
+    "title": [
+      {
+        "count": 1,
+        "name": "RouterOS router configuration page"
+      }
+    ]
+  },
+  "lastupdatetime": "2022-06-11 07:00:00"
+}
+```
+
+|  字段名  |                           描述                            |
+| :------: | :-------------------------------------------------------: |
+| distinct | 唯一计数 支持字段: ip, server, icp, domain,title,host,fid |
+|   aggs   |                         聚合信息                          |
+
+### 说明
+
+`handle.search_stats(query_text)`中，可以指定的传参如下：
+
+```python
+handle.search(query_text, field)
+```
+
+|   参数名   | 是否可空 |          默认值          | 传参类型 | 解释                                                         |
+| :--------: | :------: | :----------------------: | :------: | ------------------------------------------------------------ |
+| query_text |    否    |            无            |  string  | 需要进行查询的语句,即输入的查询内容                          |
+|   field    |    是    | `['ip', 'host', 'port']` |   list   | 可选字段，默认title，详见[附录2](https://fofa.info/api/stats/statistical)或文末附录 |
+
+## Host聚合
+
+根据当前的查询内容，生成聚合信息，host通常是ip，包含基础信息和IP标签。该接口限制请求并发为 1s/次。
+
+### 代码示例
+
+```python
+import fofa
+
+
+handle = fofa.Client()
+print(handle.search_host('78.48.50.249'))
+```
+
+### 返回信息
+
+```json
+{
+  "error": false,
+  "host": "78.48.50.249",
+  "ip": "78.48.50.249",
+  "asn": 6805,
+  "org": "Telefonica Germany",
+  "country_name": "Germany",
+  "country_code": "DE",
+  "protocol": [
+    "http",
+    "sip",
+    "https"
+  ],
+  "port": [
+    8089,
+    5060,
+    7170,
+    80,
+    443
+  ],
+  "category": [
+    "CMS"
+  ],
+  "product": [
+    "Synology-WebStation"
+  ],
+  "update_time": "2022-12-29 05:00:00"
+}
+```
+
+当detail=false时，默认为普通模式，返回结果如下：
+
+|  字段名  |   描述   |
+| :------: | :------: |
+|   port   | 端口列表 |
+| protocol | 协议列表 |
+|  domain  | 域名列表 |
+| categor  | 分类标签 |
+| product  | 产品标签 |
+
+当detail=true时，默认为详情模式，返回结果如下：
+
+|     字段名     |                             描述                             |
+| :------------: | :----------------------------------------------------------: |
+|    products    |                         产品详情列表                         |
+|    product     |                            产品名                            |
+|    category    |                           产品分类                           |
+|      leve      | l产品分层： 5 应用层， 4 支持层， 3 服务层，2 系统层， 1 硬件层， 0 无组件分层 |
+| soft_hard_code |         产品是否为硬件；值为 1 是硬件，否则为非硬件          |
+
+
+
+### 说明
+
+`handle.search_stats(query_text)`中，可以指定的传参如下：
+
+```python
+handle.search_host(host, detail=False)
+```
+
+| 参数名 | 是否可空 | 默认值 | 传参类型 | 解释             |
+| :----: | :------: | :----: | :------: | ---------------- |
+|  host  |    否    |   无   |  string  | host名，通常是ip |
+| detail |    是    | false  | boolean  | 显示端口详情     |
+
+## 获取用户名
+
+### 代码示例
+
+```
+import fofa
+
+handle = fofa.Client()
+print(handle.username)
+```
+
+### 返回信息
+
+```
+Moxin
+```
+
+**(具体会返回用户名)**
+
+## 获取F币数量
+
+### 代码示例
+
+```
+import fofa
+
+handle = fofa.Client()
+print(handle.fcoin)
+```
+
+### 返回信息
+
+```
+48
+```
+
+**（这里是整数型哦）**
+
+## 获取VIP状态
+
+### 代码示例
+
+```
+import fofa
+
+handle = fofa.Client()
+print(handle.isvip)
+```
+
+### 返回信息
+
+```
+true
+```
+
+**（这里是布尔型）**
+
+## 获取VIP等级
+
+### 代码示例
+
+```
+import fofa
+
+handle = fofa.Client()
+print(handle.viplevel)
+```
+
+### 返回信息
+
+```
+2
+```
+
+**（这里是整数型哦）**
+
+## 获取头像链接
+
+### 代码示例
+
+```
+import fofa
+
+handle = fofa.Client()
+print(handle.avatar)
+```
+
+### 返回信息
+
+```
+https://i.nosec.org/avatar/system/users/avatars/100/083/883/medium/3774a8c7500fc0a110aa957a1a3040c2_1.jpg?1671089293
+```
+
+**（这里是String哦）**
+
+> **声明：通过上述方法进行`获取用户名`、`获取F币数量`、`获取VIP状态`、`获取VIP等级`、`获取头像链接`均不需要再次请求，变量是在初始化Client中默认进行并存储的，所以不会再次产生资源消耗。**
+
+# 使用
 
 ------
 
@@ -186,10 +419,22 @@ handle.search('domain="qq.com"',field=field,size=10)
 
 ------
 
-#### 库
+#### 需要安装的库
 
 ```bash
 pip install requests
+```
+
+#### 一般不需要安装的库
+
+```
+json、base64、urllib
+```
+
+#### 一定不要安装的库
+
+```
+fofa (pip中的fofa与本仓库没有关系哦，后续如果上传到了pypi应该是叫做fofapy)
 ```
 
 ------
@@ -241,13 +486,20 @@ Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 
 
 
-## 聚合接口统计
+## 聚合接口统计（FOFA附录2）
 
-
-
-### 统计聚合
-
-
-
-### Host聚合
+| 序号 |     字段名      |      描述       | 权限 |
+| :--: | :-------------: | :-------------: | :--: |
+|  1   |    protocol     |      协议       |  无  |
+|  2   |     domain      |      域名       |  无  |
+|  3   |      port       |      端口       |  无  |
+|  4   |      title      |    http 标题    |  无  |
+|  5   |       os        |    操作系统     |  无  |
+|  6   |     server      | http server信息 |  无  |
+|  7   |     country     | 国家、城市统计  |  无  |
+|  8   |    as_number    |     asn编号     |  无  |
+|  9   | as_organization |     asn组织     |  无  |
+|  10  |   asset_type    |    资产类型     |  无  |
+|  11  |       fid       |    fid 统计     |  无  |
+|  12  |       icp       |   icp备案信息   |  无  |
 
