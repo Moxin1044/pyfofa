@@ -56,7 +56,7 @@ class Client:
 
     def search_stats(self,query_text, field=None):
         if field is None:
-            field = ""
+            field = ['title']
         fields = ','.join(field)
         query = fofa.operation.get_base64_url(query_text)
         url = f"https://fofa.info/api/v1/search/stats?fields={fields}&qbase64={query}&email={self.email}&key={self.key}"

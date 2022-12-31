@@ -85,3 +85,19 @@ Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 
 支持`python2.7+` 、`Python 3.x`环境
 
+# 附录
+
+## 查询接口
+
+
+
+## 聚合接口统计
+
+
+
+### 统计聚合
+
+
+
+### Host聚合
+
