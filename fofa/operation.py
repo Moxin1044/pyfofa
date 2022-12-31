@@ -1,10 +1,20 @@
 import requests
+import json
 import base64
 
 
 def send_get_json(url):
-    response = requests.get(url).json()
-    return response
+    with open('../config.json', 'r') as f:
+        config = json.load(f)
+    proxy = config['proxy']
+    if not proxy:
+        return requests.get(url).json()
+    proxies = {
+        'http': f'http://{proxy}',
+        'https': f'http://{proxy}'
+    }
+    return requests.get(url, proxies=proxies).json()
+
 
 
 def get_base64(text):

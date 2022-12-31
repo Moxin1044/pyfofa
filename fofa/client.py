@@ -1,7 +1,6 @@
 import json
 import requests
-
-import operation
+import fofa.operation
 
 class Client:
     def __init__(self):
@@ -21,7 +20,7 @@ class Client:
     def get_userinfo(self):
         # Check Email and key
         url = f"https://fofa.info/api/v1/info/my?email={self.email}&key={self.key}"
-        response = operation.send_get_json(url)
+        response = fofa.operation.send_get_json(url)
         if response['error']:
             return response['errmsg']
         else:
@@ -32,7 +31,7 @@ class Client:
     def userinfo(self):
         # Check Email and key
         url = f"https://fofa.info/api/v1/info/my?email={self.email}&key={self.key}"
-        response = operation.send_get_json(url)
+        response = fofa.operation.send_get_json(url)
         if response['error']:
             return response['errmsg']
         else:
@@ -42,21 +41,22 @@ class Client:
         if field is None:
             field = ['ip', 'host', 'port']
         fields = ','.join(field)
-        query = operation.get_base64(query_text)
+        query = fofa.operation.get_base64(query_text)
         url = f"https://fofa.info/api/v1/search/all?email={self.email}&key={self.key}&qbase64={query}&fields={fields}&page={page}&size={size}&full={full}"
-        response = operation.send_get_json(url)
+        response = fofa.operation.send_get_json(url)
         if response['error']:
             return response['errmsg']
         else:
             return response
 
-    def search_stats(self,query_text, field=None, page=1, size=100):
+    def search_stats(self,query_text, field=None):
         if field is None:
             field = ""
         fields = ','.join(field)
-        query = operation.get_base64(query_text)
+        query = fofa.operation.get_base64(query_text)
+        url = f"https://fofa.info/api/v1/search/stats?fields=title&qbase64=dGl0bGU9IueZvuW6piI%3D&email={self.email}&key={self.key}"
         print(query)
 
 
 clients = Client()
-print(clients.search("text"))
+print(clients.search_stats("text"))
