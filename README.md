@@ -183,7 +183,34 @@ Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 
 # 附录
 
-## 查询接口
+## 查询接口（FOFA附录1）
+
+| 序号 |     字段名      |                      描述                       |   权限   |
+| :--: | :-------------: | :---------------------------------------------: | :------: |
+|  1   |       ip        |                     ip地址                      |    无    |
+|  2   |      port       |                      端口                       |    无    |
+|  3   |    protocol     |                     协议名                      |    无    |
+|  4   |     country     |                    国家代码                     |    无    |
+|  5   |  country_name   |                     国家名                      |    无    |
+|  6   |     region      |                      区域                       |    无    |
+|  7   |      city       |                      城市                       |    无    |
+|  8   |    longitude    |                  地理位置 经度                  |    无    |
+|  9   |    latitude     |                  地理位置 纬度                  |    无    |
+|  10  |    as_number    |                     asn编号                     |    无    |
+|  11  | as_organization |                     asn组织                     |    无    |
+|  12  |      host       |                     主机名                      |    无    |
+|  13  |     domain      |                      域名                       |    无    |
+|  14  |       os        |                    操作系统                     |    无    |
+|  15  |     server      |                   网站server                    |    无    |
+|  16  |       icp       |                    icp备案号                    |    无    |
+|  17  |      title      |                    网站标题                     |    无    |
+|  18  |      jarm       |                    jarm 指纹                    |    无    |
+|  19  |     header      |                   网站header                    |    无    |
+|  20  |     banner      |                   协议 banner                   |    无    |
+|  21  |      cert       |                      证书                       |    无    |
+|  22  |      body       |                  网站正文内容                   | 企业会员 |
+|  23  |       fid       |                       fid                       | 企业会员 |
+|  24  |   structinfo    | 结构化信息 (部分协议支持、比如elastic、mongodb) | 企业会员 |
 
 
 
