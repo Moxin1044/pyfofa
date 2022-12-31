@@ -57,7 +57,7 @@ print(clients.check_fofa_config())
 ### 代码示例
 
 ```python
-import fofa
+import pyfofa
 
 
 handle = fofa.Client()
@@ -91,7 +91,7 @@ print(handle.userinfo())
 ### 代码示例
 
 ```Python
-import fofa
+import pyfofa
 
 
 handle = fofa.Client()
@@ -185,7 +185,7 @@ handle.search('domain="qq.com"',field=field,size=10)
 ### 代码示例
 
 ```Python
-import fofa
+import pyfofa
 
 
 handle = fofa.Client()
@@ -239,7 +239,7 @@ handle.search(query_text, field)
 ### 代码示例
 
 ```python
-import fofa
+import pyfofa
 
 
 handle = fofa.Client()
@@ -319,7 +319,7 @@ handle.search_host(host, detail=False)
 ### 代码示例
 
 ```python
-import fofa
+import pyfofa
 
 handle = fofa.Client()
 print(handle.username)
@@ -338,7 +338,7 @@ Moxin
 ### 代码示例
 
 ```python
-import fofa
+import pyfofa
 
 handle = fofa.Client()
 print(handle.fcoin)
@@ -357,7 +357,7 @@ print(handle.fcoin)
 ### 代码示例
 
 ```python
-import fofa
+import pyfofa
 
 handle = fofa.Client()
 print(handle.isvip)
@@ -376,7 +376,7 @@ true
 ### 代码示例
 
 ```python
-import fofa
+import pyfofa
 
 handle = fofa.Client()
 print(handle.viplevel)
@@ -395,7 +395,7 @@ print(handle.viplevel)
 ### 代码示例
 
 ```python
-import fofa
+import pyfofa
 
 handle = fofa.Client()
 print(handle.avatar)
@@ -503,6 +503,6 @@ Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 |  11  |       fid       |    fid 统计     |  无  |
 |  12  |       icp       |   icp备案信息   |  无  |
 
-# Pyfofa
+# pyfofa
 
 pyfofa是在PyPi中的一个库，与本仓库类似，但是只是定义email、key和proxy的方式不同，等待更新。
