@@ -1,6 +1,6 @@
 import pyfofa
 
-handle = fofa.Client()
+handle = pyfofa.Client()
 # print(handle.fcoin)
 # print(handle.userinfo()) # 获取user info
 # field =  ['ip','port','title','icp']
