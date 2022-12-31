@@ -434,7 +434,7 @@ json、base64、urllib
 #### 一定不要安装的库
 
 ```
-fofa (pip中的fofa与本仓库没有关系哦，后续如果上传到了pypi应该是叫做fofapy)
+fofa (pip中的fofa与本仓库没有关系哦，后续如果上传到了pypi应该是叫做pyfofa)
 ```
 
 ------
@@ -503,3 +503,6 @@ Win11 + Python3.10 + PyCharm 2022.2.3 (Professional Edition)
 |  11  |       fid       |    fid 统计     |  无  |
 |  12  |       icp       |   icp备案信息   |  无  |
 
+# Pyfofa
+
+pyfofa是在PyPi中的一个库，与本仓库类似，但是只是定义email、key和proxy的方式不同，等待更新。
