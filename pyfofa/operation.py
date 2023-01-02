@@ -5,7 +5,7 @@ import urllib.parse
 
 
 def send_get_json(url):
-    with open('../config.json', 'r') as f:
+    with open('config.json', 'r') as f:
         config = json.load(f)
     proxy = config['proxy']
     if proxy == "":

@@ -8,11 +8,12 @@ class Client:
         self.username = None
         self.email_check = None
         # load config.json
-        with open('../config.json', 'r') as f:
+        with open('config.json', 'r') as f:
             config = json.load(f)
         self.email = config['email']
         self.key = config['key']
         self.url = config['api_url']
+        self.proxy = config['proxy']
         self.get_userinfo()
 
     def check_fofa_config(self):

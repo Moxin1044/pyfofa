@@ -1,6 +1,6 @@
 {
-    "email":"",
-    "key":"",
+    "email":"testemail@example.com",
+    "key":"testkey",
     "api_url":"https://fofa.info/api/v1",
     "proxy":""
 }
