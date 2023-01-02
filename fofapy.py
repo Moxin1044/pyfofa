@@ -19,7 +19,7 @@ def menu():
     99.退出
     '''
     print(menu)
-    x = input('输入你需要的操作数 :>')
+    x = input('输入你需要的操作数 :> ')
     if x == '1':
         check_user_info()
     elif x == '2':
